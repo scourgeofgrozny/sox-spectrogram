@@ -67,16 +67,14 @@ set vernumber=1.7
 
 :BEGIN_SPECTROGRAM
 call :CMD_SIZE 140 44 222 TRUE
-set SOX_FOLDER_NAME=_Spectrograms
-:: Set spectrograms output folder name
-:: Please enter/paste the full path where sox.exe is located inside the quotes.
-set SOX_EXE="D:\Misc\Audio\sox-14-4-2\sox.exe"
+set SOX_FOLDER_NAME=Spectrograms
+set SOX_EXE=""
 if not exist %SOX_EXE% goto MSG_ERROR_SOX_EXE_NOT_FOUND
 : Define the full path to the file "metaflac.exe". Choose the win32 or win64 version depending on your OS.
-set METAFLAC_EXE="D:\Misc\Audio\sox-14-4-2\flac-1.3.4-win\win64\metaflac.exe"
+set METAFLAC_EXE=""
 if not exist %METAFLAC_EXE% goto MSG_ERROR_METAFLAC_EXE_NOT_FOUND
 
-title Batch Spectrograms to the '%SOX_FOLDER_NAME%' folder.          ' %~nx0 ' by Stiffler147.
+title Batch Spectrograms to the '%SOX_FOLDER_NAME%' folder.          '
 
 echo/--------------------------------------------
 echo|set /p="SoX.exe path + version: " >> temp_SoX_Ver.txt
@@ -136,7 +134,7 @@ if errorlevel 255 (
     echo/
     echo/--------------------------------------------
     echo/
-    CHOICE /m "[Load Spectrgrams Defaults] Load Defaults? [Yes/No] ~ 10 SECOND TIMER ~ " /T 10 /D Y
+    CHOICE /m "[Load Spectrograms Defaults] Load Defaults? [Yes/No] ~ 10 SECOND TIMER ~ " /T 10 /D Y
     if errorlevel 255 (
       echo/ Error
       ) else if errorlevel 2 (
@@ -190,7 +188,7 @@ if errorlevel 255 (
 echo/^> Previously exported .png plot files %DELETE_REPLY% be deleted.
 echo/
 set "DB_VAL_DEFAULT=120"
-set /p "DB_VAL_INPUT=[Opt 2 of 3] Enter a range of between 120-159dB or press [ENTER] for default [%DB_VAL_DEFAULT%dB]: "
+set /p "DB_VAL_INPUT=[Opt 2 of 3] Enter a range between 120-159dB or press [ENTER] for default [%DB_VAL_DEFAULT%dB]: "
 if not defined DB_VAL_INPUT (
   set "DB_VAL_INPUT=%DB_VAL_DEFAULT%"
   echo/^> dB value set to %DB_VAL_DEFAULT%.
@@ -225,7 +223,7 @@ set SECONDS_VAL_NAME=!SECONDS_VAL_NAME::=.![M.SS]
 
 echo/--------------------------------------------
 echo/
-echo PLEASE WAIT %username%, outputting spectrograms from dropped folder/s AND/OR File/s ^<:]
+echo PLEASE WAIT %username%, outputting spectrograms from dropped folder/s AND/OR file/s ^<:]
 echo/
 echo/--------------------------------------------
 
